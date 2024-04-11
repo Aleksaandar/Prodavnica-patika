@@ -1,0 +1,46 @@
+<app-not-found [visible]="!cart || cart.items.length <=0" notFoundMessage="Korpa je prazna!"
+    resetLinkText="Vratite se na pocetnu stranu.">
+
+</app-not-found>
+<div *ngIf="cart && cart.items.length>0" class="container">
+    <ul>
+        <li *ngFor="let cartItem of cart.items">
+            <div>
+                <img [src]="cartItem.patika.imageUrl" alt="cartItem.patika.name">
+            </div>
+            <div>
+                <a routerLink="/patika/{{cartItem.patika.id}}">
+                    {{cartItem.patika.name}}
+                    {{cartItem.size}}
+                </a>
+            </div>
+            <div>
+                <select #quantitySelect (change)="changeQuantity(cartItem,quantitySelect.value)">
+                    <option [selected]="cartItem.quantity === 1">1</option>
+                    <option [selected]="cartItem.quantity === 2">2</option>
+                    <option [selected]="cartItem.quantity === 3">3</option>
+                    <option [selected]="cartItem.quantity === 4">4</option>
+                    <option [selected]="cartItem.quantity === 5">5</option>
+                </select>
+            </div>
+            <div>
+                {{cartItem.price|currency}}
+            </div>
+            <div>
+                <button class="remove-button" (click)="removeFromCart(cartItem)" mat-stroked-button>Ukloni iz
+                    korpe</button>
+            </div>
+
+        </li>
+    </ul>
+    <div class="checkout">
+        <div>
+            <div class="patike-count">{{cart.items.length}}</div>
+            <div class="total-price">{{cart.totalPrice|currency}}</div>
+            <mat-dialog-actions>
+                <button mat-raised-button (click)="openDialog()">Kupi!</button>  
+            </mat-dialog-actions>
+          
+        </div>
+    </div>
+</div>

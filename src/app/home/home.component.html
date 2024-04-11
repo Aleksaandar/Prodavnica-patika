@@ -1,0 +1,35 @@
+<app-search>
+
+</app-search>
+<app-tags>
+
+</app-tags>
+<app-not-found [visible]="!patike || patike.length<=0">
+
+</app-not-found>
+<ul>
+    
+    <li *ngFor="let patike of patike">
+        <a routerLink="/patika/{{patike.id}}">
+            <img src="{{patike.imageUrl}}" alt="">
+            <div class="content">
+                <div class="name">
+                    {{patike.name}}
+                </div>
+                <span class="favorite {{patike.favorite?'':'not'}}">
+                    <mat-icon>favorite_border</mat-icon>
+                </span>
+                <div class="product-item-footer">
+                    <div class="pol">
+                        {{patike.pol}}
+                    </div>
+                    <div class="cena">
+                        <div class="span">
+                            {{patike.price|currency}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </li>
+</ul>

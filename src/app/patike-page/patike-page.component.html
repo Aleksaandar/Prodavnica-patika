@@ -1,0 +1,29 @@
+<div class="container">
+    <img [src]="patike.imageUrl" [alt]="patike.name" />
+    <div class="details">
+        <div class="header">
+            <span class="name">
+                {{patike.name}}
+            </span>
+            <span class="favorite {{patike.favorite?'':'not'}}">
+                <mat-icon>favorite_border</mat-icon>
+            </span>
+        </div>
+        <div class="pol">
+            {{patike.pol}}
+        </div>
+        <div>
+            <mat-button-toggle-group #matButtonToggleGroup="matButtonToggleGroup" name="fontStyle"
+                aria-label="Font Style">
+                <mat-button-toggle *ngFor="let velicina of patike.velicine"
+                    [value]="velicina">{{velicina}}</mat-button-toggle>
+            </mat-button-toggle-group>
+        </div>
+
+        <div class="price">
+            <span>{{patike.price|currency}}</span>
+        </div>
+        <p *ngIf="validationMessage.length > 0" style="color:red">{{validationMessage}}</p>
+        <button (click)="addToCart()" mat-stroked-button>Dodaj u Korpu</button>
+    </div>
+</div>

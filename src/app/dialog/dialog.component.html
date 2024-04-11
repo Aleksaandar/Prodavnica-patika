@@ -1,0 +1,22 @@
+<button mat-icon-button style="float:right;margin:5px" matDialogClose>
+    <mat-icon>close</mat-icon>
+</button>
+<mat-dialog-content>
+    <header>Kupi!</header>
+    <p><mat-form-field appearance="fill">
+            <input matInput placeholder="Name ">
+            <mat-icon>person</mat-icon>
+        </mat-form-field></p>
+        <p><mat-form-field>
+            <input matInput placeholder="Email ">
+            <mat-icon>drafts</mat-icon>
+        </mat-form-field></p>
+        <p><mat-form-field>
+            <input matInput placeholder="Adress" ng-required="myVar">
+            <mat-icon> local_shipping</mat-icon>
+        </mat-form-field></p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-raised-button color="primary" style="margin-right:5%;" (click)="emptyCart()"  matDialogClose >Kupi!</button>
+    <button mat-raised-button color="warn"  matDialogClose>Cancel</button>
+</mat-dialog-actions>
